@@ -62,5 +62,7 @@ def make_adder(n):
     >>> make_adder(1)(2)
     3
     """
-    "*** YOUR CODE HERE ***"
-    return 'REPLACE ME'
+    def add(k):
+        return n+k
+        
+    return lambda k:add(k)#add
