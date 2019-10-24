@@ -112,6 +112,39 @@ def interleaved_sum(n, odd_term, even_term):
     >>> # 1 + 2^2 + 3 + 4^2 + 5
     ... interleaved_sum(5, lambda x: x, lambda x: x*x)
     29
+    # other people's solution
+
+    def helper(i):
+
+        total = 0
+
+        if i + 1 <= n:
+
+            return total + odd_term(i) + even_term(i + 1) + helper(i + 2)
+
+        elif i <= n:
+
+            return total + odd_term(i) + helper(i + 1)
+
+        else:
+
+            return total
+
+    return helper(1)
+
+
+
+# Official solution
+
+    def helper(term0, term1, k):
+
+        if k == n:
+
+            return term0(k)
+
+        return term0(k) + helper(term1, term0, k + 1)
+
+    return helper(odd_term, even_term, 1)
     """
     index=True
     def f(k):
